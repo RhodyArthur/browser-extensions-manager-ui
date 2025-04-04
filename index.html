@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Browser Extensions UI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -23,14 +23,34 @@
             <header>
                 <p class="title">Extensions List</p>
                 <div class="filter-actions">
-                    <div class="filter-tab">All</div>
-                    <div class="filter-tab">Active</div>
-                    <div class="filter-tab">Inactive</div>
+                    <button class="all">All</button>
+                    <button>Active</button>
+                    <button>Inactive</button>
                 </div>
             </header>
 
             <section class="content">
+
                 <div class="card">
+                    <div class="col">
+                        <div class="icon">
+                            <img src="assets/images/logo-devlens.svg" alt="dev icon">
+                        </div>
+
+                        <div class="details">
+                            <h3 class="name">DevTools</h5>
+                            <p class="description">Quickly inspect page layouts and visualize element boundaries.</p>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn">Remove</button>
+
+                        <div class="toggle-container">
+                            <input type="checkbox" id="toggle" class="toggle-checkbox">
+                            <label for="toggle" class="toggle-label"></label>
+                        </div>
+                    </div>
 
                 </div>
             </section>
