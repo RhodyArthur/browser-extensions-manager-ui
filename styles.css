@@ -37,11 +37,11 @@ body.light-theme {
     box-sizing: border-box;
 }
 
-html,body {
+body {
     background: var(--bg);
     font-family: "Noto Sans", sans-serif;
     color: #fff;
-    height: 100%;
+    min-height: 100vh;
 }
 
 .wrapper {
@@ -74,6 +74,7 @@ header {
     background-color: var(--theme-bg);
     border-radius: 0.75rem;
     padding: 0.875rem;
+    cursor: pointer;
 }
 
 .content-wrapper {
@@ -108,6 +109,7 @@ header {
     color: var(--text-color);
     font-size: 1.25rem;
     outline: none;
+    cursor: pointer;
 }
 
 
@@ -163,6 +165,7 @@ header {
     font-size: 1rem;
     color: var(--text-color);
     outline: none;
+    cursor: pointer;
 }
 
 .toggle-container {
