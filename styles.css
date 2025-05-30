@@ -26,6 +26,7 @@ body {
     background: var(--dark-bg);
     font-family: "Noto Sans", sans-serif;
     color: #fff;
+    height: 100dvh;
 }
 
 .wrapper {
