@@ -1,4 +1,9 @@
 const contentEl = document.getElementById('content');
+const activeBtn = document.getElementById('active');
+const inactiveBtn = document.getElementById('inactive');
+const allBtn = document.getElementById('all');
+
+let extensions = [];
 
 
 async function getData() {
@@ -7,34 +12,70 @@ async function getData() {
     return data;
 }
 
-(async () => {
-    const extensions = await getData();
+function resetButtonStyles() {
+    [allBtn, activeBtn, inactiveBtn].forEach(btn => {
+        btn.style.backgroundColor = '';
+        btn.style.color = '';
+    });
+}
 
-    extensions.map(extension => {
-        contentEl.innerHTML +=
-        `
-            <div class="card">
-                    <div class="col">
-                        <div class="icon">
-                            <img src="${extension.logo}" alt="${extension.name}">
-                        </div>
+function renderData(list) {
+    contentEl.innerHTML = '';
 
-                        <div class="details">
-                            <h3 class="name">${extension.name}</h5>
-                            <p class="description">${extension.description}</p>
-                        </div>
-                    </div>
-
-                    <div class="actions">
-                        <button class="btn">Remove</button>
-
-                        <div class="toggle-container">
-                            <input type="checkbox" id="toggle" class="toggle-checkbox">
-                            <label for="toggle" class="toggle-label"></label>
-                        </div>
-                    </div>
-
+    const markup = list.map((extension, index) => `
+        <div class="card">
+            <div class="col">
+                <div class="icon">
+                    <img src="${extension.logo}" alt="${extension.name}">
                 </div>
-        `
-    })
+
+                <div class="details">
+                    <h3 class="name">${extension.name}</h3>
+                    <p class="description">${extension.description}</p>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn">Remove</button>
+
+                <div class="toggle-container">
+                    <input type="checkbox" id="toggle-${index}" class="toggle-checkbox" ${extension.isActive ? 'checked' : ''}>
+                    <label for="toggle-${index}" class="toggle-label"></label>
+                </div>
+            </div>
+        </div>
+    `).join('');
+
+    contentEl.innerHTML = markup;
+}
+
+function setActiveColors(button) {
+    button.style.backgroundColor = '#F25C54';
+    button.style.color = '#091540';
+}
+
+(async () => {
+    extensions = await getData();
+    renderData(extensions);
+    setActiveColors(allBtn)
 })()
+
+allBtn.addEventListener('click', () => {
+    resetButtonStyles()
+    setActiveColors(allBtn)
+    renderData(extensions)
+})
+
+activeBtn.addEventListener('click', () => {
+   const active = extensions.filter(extension => extension.isActive);
+   resetButtonStyles()
+   setActiveColors(activeBtn)
+   renderData(active);
+})
+
+inactiveBtn.addEventListener('click', () => {
+    const inactive = extensions.filter(extension => !extension.isActive);
+    resetButtonStyles()
+    setActiveColors(inactiveBtn)
+    renderData(inactive)
+})

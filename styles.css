@@ -94,11 +94,6 @@ header {
     outline: none;
 }
 
-.filter-actions button.all {
-    background-color: var(--red400);
-    color: var(--neutral900);
-}
-
 
 .content {
     display: flex;
