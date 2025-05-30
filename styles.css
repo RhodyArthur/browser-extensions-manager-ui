@@ -11,10 +11,26 @@
     --red400: #F25C54;
     --red500: #DE4840;
     --red700: #C7231A;
-    --light-bg: linear-gradient(180deg, #EBF2FC 0%, #EEFBF9 100%);
-    --dark-bg: linear-gradient(180deg, #04091B 0%, #091540 100%);   
+    --bg: linear-gradient(180deg, #04091B 0%, #091540 100%);
+    --text-color: var(--neutral0);
+    --desc-color: var(--neutral300);
+    --border-color: var(--neutral600);
+    --card-bg: var(--neutral800);
+    --theme-bg: var(--neutral700);
+    --btn-bg: var(--neutral700);
+    --btn-border: var(--neutral600);
 }
 
+body.light-theme {
+    --bg: linear-gradient(180deg, #EBF2FC 0%, #EEFBF9 100%);
+    --text-color: var(--neutral900);
+    --desc-color: var(--neutral600);
+    --border-color: var(--neutral300);
+    --card-bg: var(--neutral0);
+    --theme-bg: var(--neutral100);
+    --btn-bg: var(--neutral0);
+    --btn-border: var(--neutral200);
+}
 * {
     padding: 0;
     margin: 0;
@@ -22,7 +38,7 @@
 }
 
 body {
-    background: var(--dark-bg);
+    background: var(--bg);
     font-family: "Noto Sans", sans-serif;
     color: #fff;
     height: 100%;
@@ -43,8 +59,9 @@ header {
     align-items: center;
     padding: 0.5rem 0.75rem;
     width: 100%;
-    background-color: var(--neutral800);
+    background-color: var(--card-bg);
     border-radius: 0.625rem;
+    color: var(--text-color);
 }
 
 .logo {
@@ -54,7 +71,7 @@ header {
 }
 
 .theme-toggler {
-    background-color: var(--neutral700);
+    background-color: var(--theme-bg);
     border-radius: 0.75rem;
     padding: 0.875rem;
 }
@@ -75,7 +92,7 @@ header {
 .title {
     font-size: 34px;
     font-weight: 700;
-    color: var(--neutral0);
+    color: var(--text-color);
 }
 
 .filter-actions {
@@ -86,9 +103,9 @@ header {
 .filter-actions button {
     padding: 0.5rem 1.25rem 0.625rem;
     border-radius: 999px;
-    background-color: var(--neutral700);
-    border: 1px solid var(--neutral600);
-    color: var(--neutral0);
+    background-color: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    color: var(--text-color);
     font-size: 1.25rem;
     outline: none;
 }
@@ -103,9 +120,10 @@ header {
 .card {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 1.5rem;
-    border: 1px solid var(--neutral600);
-    background-color: var(--neutral800);
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
     padding: 1.25rem;
     border-radius: 20px;
 }
@@ -124,11 +142,11 @@ header {
 .name {
     font-size: 1.25rem;
     font-weight: 700;
-    color: var(--neutral0);
+    color: var(--text-color);
 }
 
 .description {
-    color: var(--neutral300);
+    color: var(--desc-color);
     font-size: 1rem;
 }
 
@@ -143,7 +161,7 @@ header {
     border: 1px solid var(--neutral600);
     background-color: transparent;
     font-size: 1rem;
-    color: var(--neutral0);
+    color: var(--text-color);
     outline: none;
 }
 
@@ -188,6 +206,10 @@ header {
     left: 16px;
 }
 
+.hidden {
+    display: none;
+}
+
 /* media queries */
 @media (min-width: 768px) {
     .wrapper {
@@ -213,7 +235,9 @@ header {
 }
 
 @media (min-width: 1024px) {
+
     .wrapper {
+        max-width: 73.125rem;
         padding-block: 2.5rem;
         margin: auto;
         gap: 4rem;

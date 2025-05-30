@@ -2,9 +2,27 @@ const contentEl = document.getElementById('content');
 const activeBtn = document.getElementById('active');
 const inactiveBtn = document.getElementById('inactive');
 const allBtn = document.getElementById('all');
+const themeEl = document.querySelector('.theme-toggler');
+const sunEl = document.querySelector('.sun');
+const moonEl = document.querySelector('.moon');
+const body = document.querySelector('body');
 
 let extensions = [];
 
+
+function toggleTheme() {
+    if (body.classList.contains('light-theme')) {
+        body.classList.remove('light-theme')
+        sunEl.classList.add('hidden')
+        moonEl.classList.remove('hidden')
+    }
+    else {
+        body.classList.add('light-theme')
+        sunEl.classList.remove('hidden');
+        moonEl.classList.add('hidden');
+    }
+    console.log('clicked')
+}
 
 async function getData() {
     const response = await fetch('assets/data.json');
@@ -79,3 +97,5 @@ inactiveBtn.addEventListener('click', () => {
     setActiveColors(inactiveBtn)
     renderData(inactive)
 })
+
+themeEl.addEventListener('click', toggleTheme)
