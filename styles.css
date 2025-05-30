@@ -37,7 +37,7 @@ body.light-theme {
     box-sizing: border-box;
 }
 
-body {
+html,body {
     background: var(--bg);
     font-family: "Noto Sans", sans-serif;
     color: #fff;
@@ -158,7 +158,7 @@ header {
 .actions .btn {
     padding: 0.5rem 1rem;
     border-radius: 999px;
-    border: 1px solid var(--neutral600);
+    border: 1px solid var(--border-color);
     background-color: transparent;
     font-size: 1rem;
     color: var(--text-color);
